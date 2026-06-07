@@ -8,27 +8,41 @@
 
 Персонаж свободно перемещается по комнатам и может включать/выключать интерактивные объекты. Всё остальное — улучшения поверх этого.
 
+## Current Milestone: v2.0 Room Overhaul + Graphics
+
+**Goal:** Полностью переработать визуальное качество и архитектуру комнат на основе фидбека после v1 MVP.
+
+**Target features:**
+- Удаление собаки (блокирует pathfinding)
+- Добавление мебели (кровать, диван, стол, холодильник, шкафы)
+- Новая планировка: главная комната по центру, остальные вокруг с прямыми переходами
+- Исправление переключения света
+- Удаление видимой плитки с пола, комнаты длиннее
+- Стены: фоновая стена (кондиционер, выключатели) + боковые стены
+- Улучшение графики — более реалистичные и детальные предметы
+
 ## Requirements
 
 ### Validated
 
-(None yet — ship to validate)
+(v1 MVP shipped on 2026-06-08)
+
+- [x] **CHAR-01**: Персонаж (стиль Эльзы) отображается в изометрической комнате
+- [x] **CHAR-02**: Персонаж перемещается по клику/тапу (point-and-click movement)
+- [x] **CHAR-03**: Персонаж переходит между комнатами
+- [x] **OBJ-01**: Интерактивные объекты (свет, чайник, фен, телевизор) — вкл/выкл
+- [x] **ROOM-01**: 5 комнат: спальня, гостиная, кухня, ванна, игровая
+- [x] **ROOM-02**: Изометрический рендеринг с Y-sorting
+- [x] **PET-01**: Питомец (собака) — можно покормить
 
 ### Active
 
-- [ ] **CHAR-01**: Персонаж (стиль Эльзы) отображается в изометрической комнате
-- [ ] **CHAR-02**: Персонаж перемещается по клику/тапу (point-and-click movement)
-- [ ] **CHAR-03**: Персонаж переходит между комнатами
-- [ ] **OBJ-01**: Интерактивные объекты (свет, чайник, фен, телевизор) — вкл/выкл
-- [ ] **ROOM-01**: 5 комнат: спальня, гостиная, кухня, ванна, игровая
-- [ ] **ROOM-02**: Изометрический рендеринг с Y-sorting
-- [ ] **PET-01**: Питомец (собака) — можно покормить
+(Defined in REQUIREMENTS.md for v2.0)
 
 ### Out of Scope
 
-- Питомцы кроме собаки — будут добавлены позже
 - Механика воды/пены в ванной — defer
-- Смена одежды персонажа — v2
+- Смена одежды персонажа — defer
 - Мультиплеер — не планируется
 - Генерация изображений/спрайтов через AI — нецелесообразно
 
@@ -51,9 +65,26 @@
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Phaser 3 + React | Мощный 2D-движок с изометрической поддержкой, React для UI | — Pending |
-| Zustand | Лёгкий мост между React и Phaser | — Pending |
-| Начинать с персонажа + объектов | Самая важная механика — движение и интерактивность | — Pending |
+| Phaser 3 + React | Мощный 2D-движок с изометрической поддержкой, React для UI | Validated in v1 |
+| Zustand | Лёгкий мост между React и Phaser | Validated in v1 |
+| Начинать с персонажа + объектов | Самая важная механика — движение и интерактивность | Validated in v1 |
+
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd-complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
 
 ---
-*Last updated: 2026-06-07 after initialization*
+*Last updated: 2026-06-08 after v2.0 milestone start*

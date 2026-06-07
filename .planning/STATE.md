@@ -1,14 +1,21 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: unknown
-last_updated: "2026-06-07T22:11:02.497Z"
+milestone: v2.0
+milestone_name: Room Overhaul + Graphics
+status: planning
+last_updated: "2026-06-08T00:00:00.000Z"
+last_activity: 2026-06-08
+progress:
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # STATE: Doll Room
 
-> Isometric life simulator for girls ages 6-12. Last updated during roadmap creation.
+> Isometric life simulator for girls ages 6-12. v1 MVP shipped. Now entering v2.0 Room Overhaul + Graphics.
 
 ---
 
@@ -16,20 +23,20 @@ last_updated: "2026-06-07T22:11:02.497Z"
 
 **Core Value**: The character moves freely through rooms and can turn interactive objects on and off. Everything else is an enhancement on top of this.
 
-**Current Focus**: v1 MVP complete — all 5 phases delivered
+**Current Focus**: v2.0 Room Overhaul + Graphics — Phase 6 Cleanup & Fixes
 
-**Milestone**: v1 MVP
+**Milestone**: v2.0 Room Overhaul + Graphics
 
 ---
 
 ## Current Position
 
-- **Phase**: all (delivered)
-- **Plan**: all 5 phases complete
-- **Status**: v1 MVP complete ✓
-- **Progress**: [#################################] 100%
+Phase: 6 of 9 (Cleanup & Fixes) — first v2.0 phase
+Plan: —
+Status: Ready to plan
+Last activity: 2026-06-08 — Roadmap created for v2.0 (Phases 6-9)
 
----
+Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 
@@ -37,8 +44,8 @@ _(To be tracked during development)_
 
 | Metric | Target | Current |
 |--------|--------|---------|
-| Phase completion rate | N/A | 0/5 |
-| Requirement coverage | 100% | 16/16 (100%) |
+| Phase completion rate | N/A | 0/4 |
+| Requirement coverage | 100% | 25/25 (100%) |
 | Plans per phase | TBD | 0 |
 
 ---
@@ -49,52 +56,51 @@ _(To be tracked during development)_
 
 | # | Decision | Rationale | Status |
 |---|----------|-----------|--------|
-| 1 | Phaser 3 + React | Game engine for isometric rendering, React for UI shell | Pending validation |
-| 2 | Zustand as bridge | Single source of truth between React and Phaser | Pending validation |
-| 3 | One Phaser Scene for all rooms | Room switching via camera pan, not scene restart | Pending validation |
-| 4 | Start with character + objects | Core mechanic is movement and interactivity | Confirmed in roadmap |
+| 1 | Remove dog (CHAR-04) | Blocks pathfinding, not core to gameplay | Decided in v2.0 requirements |
+| 2 | Furniture is decorative only | Different from interactive objects — no click handling | Decided in v2.0 requirements |
+| 3 | Linear room layout with bedroom center | Better flow than original layout | Decided in v2.0 requirements |
+| 4 | Graphics via procedural canvas textures | No external sprite assets needed | Decided in v2.0 requirements |
 
-### Technical Constraints
+### Reminders from Instructions
+
+- Dog removal: remove Dog.ts, remove dog from GameScene, remove feedDog from store
+- Room redesign: new roomData.ts with linear layout, remove old room grid
+- Furniture items: non-interactive decorative objects only
+- OBJ-04: one-line fix in InteractiveObject.ts handleClick()
+- Graphics: procedural canvas texture improvements (no external assets)
+
+### Technical Constraints (carried from v1)
 
 - **Stack**: React + Vite + TypeScript + TailwindCSS + Phaser 3
 - **State**: Zustand (bridge between React UI and Phaser)
 - **Graphics**: Sprite-based 2.5D with Y-sorting
 - **Input**: Mouse + Touch (both must work)
 - **Mobile**: Capacitor for iOS/Android packaging
-- **Audio**: Howler.js recommended (more reliable than Phaser audio on iOS)
 
-### Critical Pitfalls to Avoid
+### Pending Todos
 
-1. React-Phaser render loop conflict -- Phaser singleton outside React component tree, mount with empty deps
-2. Split game state -- Zustand is single source of truth; Phaser only renders
-3. Naive Y-sorting -- depth formula: `(tileX + tileY) * TILE_HEIGHT + verticalOffset`
-4. Children's touch targets -- 64px minimum touch area, debounce 200ms
+None yet.
 
-### Open Items
+### Blockers/Concerns
 
-- Verify Phaser 3.80+ and Zustand 5+ API compatibility
-- UX patterns for children 6-12 -- playtesting recommended
-- iOS PWA edge cases and Capacitor plugin APIs need deeper research
-- Save format schema stability and migration strategy
-
-### Blocker History
-
-_(None yet)_
+None yet.
 
 ---
 
 ## Session Continuity
 
-### Last Session (Roadmap Creation)
+### Last Session (Roadmap Creation for v2.0)
 
-- Read PROJECT.md, REQUIREMENTS.md, research/SUMMARY.md, config.json
-- Identified 16 v1 requirements across 6 categories
-- Derived 5 phases with goal-backward success criteria
-- Mapped all 16 requirements to Phases 1-4 (Phase 5 is delivery quality)
-- Wrote ROADMAP.md, STATE.md
+- Read PROJECT.md, REQUIREMENTS.md, config.json for v2.0 context
+- Identified 25 v2.0 requirements across 5 categories
+- Derived 4 phases (6-9) with goal-backward success criteria
+- Mapped all 25 requirements to Phases 6-9 (100% coverage)
+- Updated ROADMAP.md with milestone-grouped format
+- Updated REQUIREMENTS.md traceability section
+- Awaiting roadmap approval
 
-### Next: Await roadmap approval, then `/gsd-plan-phase 1`
+### Next: `/gsd-plan-phase 6`
 
 ---
 
-*State last updated: 2026-06-07*
+*State last updated: 2026-06-08*

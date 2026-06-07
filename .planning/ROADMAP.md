@@ -6,114 +6,157 @@
 
 ---
 
+## Milestones
+
+- ✅ **v1.0 MVP** — Phases 1-5 (shipped 2026-06-08)
+- ✅ **v2.0 Room Overhaul + Graphics** — Phases 6-9 (shipped 2026-06-08)
+
 ## Phases
 
-- [x] **Phase 1: Project Skeleton** - Vite + Phaser + Zustand scaffold with singleton mount pattern
-- [x] **Phase 2: Isometric Room System** - 5 rooms with Y-sorting and camera pan
-- [x] **Phase 3: Character + Interaction + UI** - Player movement, interactive objects, React HUD
-- [x] **Phase 4: Pet System + Save/Load** - Dog entity, feed interaction, persistence
-- [x] **Phase 5: Polish + Mobile** - Audio, loading screens, Capacitor, PWA
+### ✅ v1.0 MVP (Phases 1-5) — SHIPPED 2026-06-08
+
+<details>
+<summary>v1.0 MVP — 5 phases, shipped 2026-06-08</summary>
+
+- [x] **Phase 1: Project Skeleton** — Vite + Phaser + Zustand scaffold with singleton mount pattern
+- [x] **Phase 2: Isometric Room System** — 5 rooms with Y-sorting and camera pan
+- [x] **Phase 3: Character + Interaction + UI** — Player movement, interactive objects, React HUD
+- [x] **Phase 4: Pet System + Save/Load** — Dog entity, feed interaction, persistence
+- [x] **Phase 5: Polish + Mobile** — Audio, loading screens, Capacitor, PWA
+
+</details>
+
+### ✅ v2.0 Room Overhaul + Graphics (Shipped 2026-06-08)
+
+**Milestone Goal:** Fully redesign the visual quality and room architecture based on feedback from v1 MVP.
+
+- [x] **Phase 6: Cleanup & Fixes** — Remove blocking dog entity, fix light toggle bug
+- [x] **Phase 7: Room Layout & Walls** — Linear room layout with walls, no tile grid
+- [x] **Phase 8: Furniture** — Decorative furniture across all 5 rooms
+- [x] **Phase 9: Graphics Polish** — Improved textures, sprites, shadows, and lighting
 
 ---
 
 ## Phase Details
 
-### Phase 1: Project Skeleton
-**Goal**: The application bootstraps correctly with React hosting a Phaser canvas and Zustand bridging the two systems
-**Depends on**: Nothing
-**Requirements**: UI-01, UI-02
+### Phase 6: Cleanup & Fixes
+**Goal**: Legacy code is cleaned up and core interaction bugs are fixed
+**Depends on**: Nothing (first v2.0 phase)
+**Requirements**: CHAR-04, OBJ-04
 **Success Criteria** (what must be TRUE):
-  1. Phaser 3 canvas renders inside a React component (GameShell) without render loop conflicts
-  2. Zustand store exists and is readable/writable from both the React component tree and Phaser game code
-  3. Vite dev server starts with sub-second HMR and the empty game scene displays in browser
-  4. Source code is organized into three layers (React, Zustand, Phaser) with no circular imports
-**Plans**: TBD
-**UI hint**: yes
-
-### Phase 2: Isometric Room System
-**Goal**: Players can see and navigate between five isometric rooms with correct depth sorting
-**Depends on**: Phase 1
-**Requirements**: ROOM-01, ROOM-02, ROOM-03
-**Success Criteria** (what must be TRUE):
-  1. Five distinct rooms (spalnya, gostinaya, kuhnya, vanna, igrovaya) are rendered in isometric projection
-  2. Furniture and room elements are depth-sorted by Y-coordinate so nearer objects render in front of farther ones
-  3. Camera pans smoothly between rooms when the player moves between them (no black screen, no scene restart)
-  4. Each room has a defined tile map with walkable and non-walkable areas
+  1. Dog is no longer visible in any room — Dog.ts removed, dog removed from GameScene
+  2. Feed dog button no longer appears in the React HUD
+  3. Clicking a light that is OFF turns it ON (correct toggle behavior)
+  4. Clicking a light that is ON turns it OFF (correct toggle behavior)
 **Plans**: TBD
 
-### Phase 3: Character + Interaction + UI
-**Goal**: Players can move the character through rooms with point-and-click, interact with objects, and see game info on a HUD
-**Depends on**: Phase 2
-**Requirements**: CHAR-01, CHAR-02, CHAR-03, OBJ-01, OBJ-02, OBJ-03, UI-03
+### Phase 7: Room Layout & Walls
+**Goal**: Rooms are restructured into a linear layout with walls and no visible tile grid
+**Depends on**: Phase 6
+**Requirements**: ROOM-04, ROOM-05, ROOM-06, WALL-01, WALL-02
 **Success Criteria** (what must be TRUE):
-  1. Elsa-like character sprite appears in the starting room with an idle animation loop
-  2. Player clicks/taps any walkable tile and the character walks there with a matching walk animation
-  3. Character transitions smoothly between rooms through designated doorway tiles, with the camera following
-  4. Player clicks interactive objects (light, kettle, hairdryer, TV) and each toggles on/off with a visible sprite change or animation
-  5. React HUD overlay (pointer-events-none) displays above the Phaser canvas, showing current room name and interaction prompts
-**Plans**: TBD
-**UI hint**: yes
-
-### Phase 4: Pet System + Save/Load
-**Goal**: A dog pet enriches the world, and all game state persists across sessions
-**Depends on**: Phase 3
-**Requirements**: PET-01, PET-02, SAVE-01, SAVE-02
-**Success Criteria** (what must be TRUE):
-  1. Dog sprite appears in rooms and follows basic behavior (follows player or stays in room)
-  2. Player can interact with the dog (feed action) with visible animation/feedback
-  3. Game state (character position, object on/off states, pet state) persists via localStorage or IndexedDB
-  4. Game loads from saved state on restart -- character position, object states, and pet state resume exactly as saved
+  1. Five rooms are arranged linearly: Living-Kitchen-Bedroom-Bathroom-Playroom with Bedroom at center
+  2. Rooms connect side-by-side without doorways — character walks directly between adjacent rooms
+  3. Room dimensions are longer than before, and the floor has no visible tile grid
+  4. Each room has a back wall at the top edge with an AC unit and light switches visible
+  5. Each room has side walls visible on both left and right edges
 **Plans**: TBD
 
-### Phase 5: Polish + Mobile
-**Goal**: The game is production-ready for web and mobile app stores
-**Depends on**: Phase 4
-**Requirements**: (none -- delivery quality, all v1 requirements covered in Phases 1-4)
+### Phase 8: Furniture
+**Goal**: All five rooms are furnished with decorative non-interactive objects
+**Depends on**: Phase 7
+**Requirements**: FURN-01, FURN-02, FURN-03, FURN-04, FURN-05, FURN-06, FURN-07, FURN-08, FURN-09, FURN-10, FURN-11, FURN-12, FURN-13, FURN-14
 **Success Criteria** (what must be TRUE):
-  1. Ambient background audio and sound effects play correctly, including iOS audio context unlock
-  2. A loading screen displays during asset loading before the game starts
-  3. Game builds and runs inside a Capacitor wrapper on iOS and Android without code changes
-  4. Game can be installed as a PWA with offline cached assets for repeat play
-**Plans**: TBD
-**UI hint**: yes
+  1. All 5 rooms have their assigned furniture visible and correctly positioned ✓
+  2. Furniture items are depth-sorted correctly in isometric projection ✓
+  3. None of the furniture items respond to click/tap — they are purely decorative ✓
+**Status**: Complete 2026-06-08
+
+### Phase 9: Graphics Polish
+**Goal**: Visual quality of all game elements is improved with procedural canvas textures
+**Depends on**: Phase 8
+**Requirements**: GFX-01, GFX-02, GFX-03, GFX-04
+**Success Criteria** (what must be TRUE):
+  1. All interactive objects (light, kettle, hairdryer, TV, switches) show visibly improved detail ✓
+  2. The character sprite has visibly more detail and looks more realistic ✓
+  3. Wall and floor surfaces show realistic textures (not flat colors) ✓
+  4. Drop shadows are visible under objects and the character in all rooms ✓
+  5. Lighting effects (e.g., light cone from lamps, glow from light switches) are visible when objects are on ✓
+**Status**: Complete 2026-06-08
 
 ---
 
 ## Progress
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Project Skeleton | 0/0 | Done | 2026-06-08 |
-| 2. Isometric Room System | 0/0 | Done | 2026-06-08 |
-| 3. Character + Interaction + UI | 0/0 | Done | 2026-06-08 |
-| 4. Pet System + Save/Load | 0/0 | Done | 2026-06-08 |
-| 5. Polish + Mobile | 0/0 | Done | 2026-06-08 |
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 1. Project Skeleton | v1.0 | 0/0 | Complete | 2026-06-08 |
+| 2. Isometric Room System | v1.0 | 0/0 | Complete | 2026-06-08 |
+| 3. Character + Interaction + UI | v1.0 | 0/0 | Complete | 2026-06-08 |
+| 4. Pet System + Save/Load | v1.0 | 0/0 | Complete | 2026-06-08 |
+| 5. Polish + Mobile | v1.0 | 0/0 | Complete | 2026-06-08 |
+| 6. Cleanup & Fixes | v2.0 | 0/0 | Complete | 2026-06-08 |
+| 7. Room Layout & Walls | v2.0 | 0/0 | Complete | 2026-06-08 |
+| 8. Furniture | v2.0 | 14/14 | Complete | 2026-06-08 |
+| 9. Graphics Polish | v2.0 | 4/4 | Complete | 2026-06-08 |
 
 ---
 
 ## Requirement Coverage
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| UI-01 | Phase 1 | Pending |
-| UI-02 | Phase 1 | Pending |
-| ROOM-01 | Phase 2 | Pending |
-| ROOM-02 | Phase 2 | Pending |
-| ROOM-03 | Phase 2 | Pending |
-| CHAR-01 | Phase 3 | Pending |
-| CHAR-02 | Phase 3 | Pending |
-| CHAR-03 | Phase 3 | Pending |
-| OBJ-01 | Phase 3 | Pending |
-| OBJ-02 | Phase 3 | Pending |
-| OBJ-03 | Phase 3 | Pending |
-| UI-03 | Phase 3 | Pending |
-| PET-01 | Phase 4 | Pending |
-| PET-02 | Phase 4 | Pending |
-| SAVE-01 | Phase 4 | Pending |
-| SAVE-02 | Phase 4 | Pending |
+### v1.0 (Shipped)
 
-**Coverage:** 16/16 requirements mapped (100%). Phase 5 covers delivery quality only.
+| Requirement | Phase | Milestone | Status |
+|-------------|-------|-----------|--------|
+| UI-01 | Phase 1 | v1.0 | Done |
+| UI-02 | Phase 1 | v1.0 | Done |
+| ROOM-01 | Phase 2 | v1.0 | Done |
+| ROOM-02 | Phase 2 | v1.0 | Done |
+| ROOM-03 | Phase 2 | v1.0 | Done |
+| CHAR-01 | Phase 3 | v1.0 | Done |
+| CHAR-02 | Phase 3 | v1.0 | Done |
+| CHAR-03 | Phase 3 | v1.0 | Done |
+| OBJ-01 | Phase 3 | v1.0 | Done |
+| OBJ-02 | Phase 3 | v1.0 | Done |
+| OBJ-03 | Phase 3 | v1.0 | Done |
+| UI-03 | Phase 3 | v1.0 | Done |
+| PET-01 | Phase 4 | v1.0 | Done |
+| PET-02 | Phase 4 | v1.0 | Done |
+| SAVE-01 | Phase 4 | v1.0 | Done |
+| SAVE-02 | Phase 4 | v1.0 | Done |
+
+### v2.0 (Active)
+
+| Requirement | Phase | Milestone | Status |
+|-------------|-------|-----------|--------|
+| CHAR-04 | Phase 6 | v2.0 | Pending |
+| OBJ-04 | Phase 6 | v2.0 | Pending |
+| ROOM-04 | Phase 7 | v2.0 | Pending |
+| ROOM-05 | Phase 7 | v2.0 | Pending |
+| ROOM-06 | Phase 7 | v2.0 | Pending |
+| WALL-01 | Phase 7 | v2.0 | Pending |
+| WALL-02 | Phase 7 | v2.0 | Pending |
+| FURN-01 | Phase 8 | v2.0 | Done |
+| FURN-02 | Phase 8 | v2.0 | Done |
+| FURN-03 | Phase 8 | v2.0 | Done |
+| FURN-04 | Phase 8 | v2.0 | Done |
+| FURN-05 | Phase 8 | v2.0 | Done |
+| FURN-06 | Phase 8 | v2.0 | Done |
+| FURN-07 | Phase 8 | v2.0 | Done |
+| FURN-08 | Phase 8 | v2.0 | Done |
+| FURN-09 | Phase 8 | v2.0 | Done |
+| FURN-10 | Phase 8 | v2.0 | Done |
+| FURN-11 | Phase 8 | v2.0 | Done |
+| FURN-12 | Phase 8 | v2.0 | Done |
+| FURN-13 | Phase 8 | v2.0 | Done |
+| FURN-14 | Phase 8 | v2.0 | Done |
+| GFX-01 | Phase 9 | v2.0 | Done |
+| GFX-02 | Phase 9 | v2.0 | Done |
+| GFX-03 | Phase 9 | v2.0 | Done |
+| GFX-04 | Phase 9 | v2.0 | Done |
+
+**Coverage:** 25/25 v2.0 requirements mapped (100%). 16/16 v1.0 shipped.
 
 ---
 
-*Roadmap created: 2026-06-07*
+*Roadmap created: 2026-06-07 (v1.0). v2.0 phases added: 2026-06-08*

@@ -17,13 +17,6 @@ export interface ObjectState {
   isOn: boolean
 }
 
-export interface DogState {
-  hunger: number
-  roomId: string
-  tileX: number
-  tileY: number
-}
-
 interface GameState {
   isGameReady: boolean
   currentScene: string
@@ -32,7 +25,6 @@ interface GameState {
   interactionPrompt: string
   player: PlayerState
   objects: ObjectState[]
-  dog: DogState
 
   setGameReady: (ready: boolean) => void
   setCurrentScene: (key: string) => void
@@ -43,22 +35,11 @@ interface GameState {
   setPlayerInteracting: (interacting: boolean) => void
   toggleObject: (objectId: string) => void
   setObjects: (objects: ObjectState[]) => void
-  setDogPosition: (tileX: number, tileY: number, roomId: string) => void
-  feedDog: () => void
-  setDogHunger: (hunger: number) => void
 }
 
 export interface SaveData {
   player: { tileX: number; tileY: number; roomId: string }
   objects: { id: string; isOn: boolean }[]
-  dog: { hunger: number; roomId: string; tileX: number; tileY: number }
-}
-
-const DEFAULT_DOG: DogState = {
-  hunger: 50,
-  roomId: 'spalnya',
-  tileX: 5,
-  tileY: 3,
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -68,14 +49,13 @@ export const useGameStore = create<GameState>((set) => ({
   gameHeight: 600,
   interactionPrompt: '',
   player: {
-    tileX: 2,
-    tileY: 2,
+    tileX: 24,
+    tileY: 5,
     roomId: 'spalnya',
     isMoving: false,
     isInteracting: false,
   },
   objects: [],
-  dog: { ...DEFAULT_DOG },
 
   setGameReady: (ready) => set({ isGameReady: ready }),
   setCurrentScene: (key) => set({ currentScene: key }),
@@ -94,10 +74,4 @@ export const useGameStore = create<GameState>((set) => ({
       ),
     })),
   setObjects: (objects) => set({ objects }),
-  setDogPosition: (tileX, tileY, roomId) =>
-    set((s) => ({ dog: { ...s.dog, tileX, tileY, roomId } })),
-  feedDog: () =>
-    set((s) => ({ dog: { ...s.dog, hunger: Math.min(100, s.dog.hunger + 30) } })),
-  setDogHunger: (hunger) =>
-    set((s) => ({ dog: { ...s.dog, hunger } })),
 }))

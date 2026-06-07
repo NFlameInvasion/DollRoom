@@ -22,9 +22,12 @@ export class InteractiveObject {
   private def: ObjectDef
   private container: Phaser.GameObjects.Container
   private img: Phaser.GameObjects.Image
+  private shadow: Phaser.GameObjects.Image
+  private glow: Phaser.GameObjects.Image
   private labelText: Phaser.GameObjects.Text
   private isOn = false
   private texPrefix: string
+  private hasGlow: boolean
 
   constructor(scene: Phaser.Scene, def: ObjectDef, originX: number, originY: number) {
     this.scene = scene
@@ -37,8 +40,20 @@ export class InteractiveObject {
     this.container = scene.add.container(pos.x, pos.y)
     this.container.setDepth(depth + 5000)
 
+    // Shadow
+    this.shadow = scene.add.image(0, 6, 'fx_shadow')
+    this.shadow.setDepth(-1)
+    this.container.add(this.shadow)
+
     this.img = scene.add.image(0, 0, `${this.texPrefix}_off`)
     this.container.add(this.img)
+
+    // Light glow (only for lights and TV)
+    this.hasGlow = def.id.startsWith('light_') || def.id === 'tv'
+    this.glow = scene.add.image(0, 0, 'fx_light_glow')
+    this.glow.setDepth(-1)
+    this.glow.setVisible(false)
+    this.container.add(this.glow)
 
     this.labelText = scene.add.text(0, -TILE_HEIGHT - 12, def.label, {
       fontSize: '11px',
@@ -73,6 +88,9 @@ export class InteractiveObject {
     this.isOn = !this.isOn
     useGameStore.getState().toggleObject(this.def.id)
     this.img.setTexture(`${this.texPrefix}_${this.isOn ? 'on' : 'off'}`)
+    if (this.hasGlow) {
+      this.glow.setVisible(this.isOn)
+    }
     this.scene.tweens.add({
       targets: this.container,
       scaleX: 1.15, scaleY: 1.15,
@@ -81,7 +99,7 @@ export class InteractiveObject {
   }
 
   private handleClick(): void {
-    if (this.isOn) this.toggle()
+    this.toggle()
   }
 
   setVisible(v: boolean): void { this.container.setVisible(v) }

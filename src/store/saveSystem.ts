@@ -11,12 +11,6 @@ export function saveGame(): void {
       roomId: state.player.roomId,
     },
     objects: state.objects.map((o) => ({ id: o.id, isOn: o.isOn })),
-    dog: {
-      hunger: state.dog.hunger,
-      roomId: state.dog.roomId,
-      tileX: state.dog.tileX,
-      tileY: state.dog.tileY,
-    },
   }
   try {
     localStorage.setItem(SAVE_KEY, JSON.stringify(data))
@@ -44,8 +38,6 @@ export function applySaveData(data: SaveData): void {
       state.toggleObject(savedObj.id)
     }
   }
-  state.setDogPosition(data.dog.tileX, data.dog.tileY, data.dog.roomId)
-  state.setDogHunger(data.dog.hunger)
 }
 
 export function clearSave(): void {

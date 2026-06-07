@@ -1,109 +1,97 @@
-# Requirements: Doll Room
+# Requirements: Doll Room v2.0
 
-**Defined:** 2026-06-07
+**Defined:** 2026-06-08
+**Milestone:** v2.0 Room Overhaul + Graphics
 **Core Value:** Персонаж свободно перемещается по комнатам и может включать/выключать интерактивные объекты
 
-## v1 Requirements
+## v2.0 Requirements
 
-Requirements for initial release. Each maps to roadmap phases.
+### Room Layout
 
-### Rooms
+- [x] **ROOM-04**: 5 комнат в линейной планировке: Гостиная-Кухня-Спальня-Ванна-Игровая (спальня по центру)
+- [x] **ROOM-05**: Комнаты соединены напрямую (side-by-side), переход без doorways
+- [x] **ROOM-06**: Комнаты длиннее по размеру, без видимой сетки плиток на полу
 
-- [ ] **ROOM-01**: 5 изометрических комнат — спальня, гостиная, кухня, ванна, игровая
-- [ ] **ROOM-02**: Комнаты рендерятся с правильным Y-sorting (depth по изометрической координате)
-- [ ] **ROOM-03**: Персонаж плавно переходит между комнатами (camera pan, не black screen)
+### Walls
 
-### Character
+- [x] **WALL-01**: Фоновая стена с кондиционером и выключателями света
+- [x] **WALL-02**: Боковые стены слева и справа каждой комнаты
 
-- [ ] **CHAR-01**: Персонаж (визуальный стиль Эльзы) отображается в изометрической комнате
-- [ ] **CHAR-02**: Персонаж перемещается по клику/тапу (point-and-click movement) с анимацией ходьбы
-- [ ] **CHAR-03**: Анимации — idle, walk, interact
+### Furniture
 
-### Interactive Objects
+- [x] **FURN-01**: Кровать в спальне
+- [x] **FURN-02**: Прикроватная тумбочка в спальне
+- [x] **FURN-03**: Платяной шкаф в спальне
+- [x] **FURN-04**: Диван в гостиной
+- [x] **FURN-05**: Журнальный столик в гостиной
+- [x] **FURN-06**: Люстра в гостиной
+- [x] **FURN-07**: Стеллаж/полка с книгами в гостиной
+- [x] **FURN-08**: Обеденный стол + стулья на кухне
+- [x] **FURN-09**: Холодильник на кухне
+- [x] **FURN-10**: Кухонный гарнитур (шкафчики, плита) на кухне
+- [x] **FURN-11**: Микроволновка на кухне
+- [x] **FURN-12**: Шкафчик в ванной
+- [x] **FURN-13**: Зеркало в ванной
+- [x] **FURN-14**: Полки с игрушками в игровой
 
-- [ ] **OBJ-01**: Базовый класс интерактивного объекта (клик/тап для взаимодействия)
-- [ ] **OBJ-02**: Объекты с состоянием вкл/выкл: свет, чайник, фен, телевизор
-- [ ] **OBJ-03**: Визуальная обратная связь при взаимодействии (смена спрайта/анимация)
+### Fixes
 
-### Pets
+- [x] **CHAR-04**: Удалить собаку из игры (блокирует pathfinding)
+- [x] **OBJ-04**: Починить переключение света (клик должен включать, когда выключен)
 
-- [ ] **PET-01**: Собака присутствует в комнатах
-- [ ] **PET-02**: Собаку можно покормить (интерактивное взаимодействие)
+### Graphics
 
-### UI / Shell
+- [x] **GFX-01**: Улучшить детализацию и реализм всех интерактивных предметов
+- [x] **GFX-02**: Улучшить спрайт персонажа (больше деталей, реалистичнее)
+- [x] **GFX-03**: Реалистичные текстуры стен и напольного покрытия
+- [x] **GFX-04**: Добавить тени и эффекты освещения
 
-- [ ] **UI-01**: Phaser canvas смонтирован в React (GameShell)
-- [ ] **UI-02**: Zustand store как мост между Phaser и React
-- [ ] **UI-03**: HUD overlay (React, pointer-events-none)
+## v2.1 (Future)
 
-### Save / Load
+- Смена одежды персонажа
+- Механика воды/пены в ванной
+- Котик (покормить, погладить)
 
-- [ ] **SAVE-01**: Состояние игры сохраняется (localStorage / IndexedDB)
-- [ ] **SAVE-02**: Игра загружается из сохранения при старте
-
-## v2 Requirements
-
-Deferred to future release.
-
-### Pets
-
-- **PET-03**: Котик (покормить, погладить)
-- **PET-04**: Рыбки (покормить)
-
-### Advanced Interactions
-
-- **OBJ-04**: Механика воды/пены в ванне
-- **OBJ-05**: Фен для сушки волос
-- **OBJ-06**: Еда (мороженое, сок) — анимация + шкалы
-
-### Customization
-
-- **CUST-01**: Смена одежды персонажа
-- **CUST-02**: Декорирование комнат (обои, мебель)
-
-### Social
-
-- **SOCL-01**: Обниматься с NPC
-- **SOCL-02**: Собирать игрушки
-
-## Out of Scope
+## Out of Scope (v2.0)
 
 | Feature | Reason |
 |---------|--------|
-| Multiplayer | Не планируется |
+| Мультиплеер | Не планируется |
 | AI-генерация спрайтов | Нецелесообразно |
+| Озвучка голосом | Высокая сложность |
 | Микротранзакции | Целевая аудитория — дети |
-| Текст/чат | Безопасность детей |
-| Озвучка голосом | Высокая сложность для MVP |
 
 ## Traceability
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| UI-01 | Phase 1 | Pending |
-| UI-02 | Phase 1 | Pending |
-| ROOM-01 | Phase 2 | Pending |
-| ROOM-02 | Phase 2 | Pending |
-| ROOM-03 | Phase 2 | Pending |
-| CHAR-01 | Phase 3 | Pending |
-| CHAR-02 | Phase 3 | Pending |
-| CHAR-03 | Phase 3 | Pending |
-| OBJ-01 | Phase 3 | Pending |
-| OBJ-02 | Phase 3 | Pending |
-| OBJ-03 | Phase 3 | Pending |
-| UI-03 | Phase 3 | Pending |
-| PET-01 | Phase 4 | Pending |
-| PET-02 | Phase 4 | Pending |
-| SAVE-01 | Phase 4 | Pending |
-| SAVE-02 | Phase 4 | Pending |
+| CHAR-04 | Phase 6 | Done |
+| OBJ-04 | Phase 6 | Done |
+| ROOM-04 | Phase 7 | Done |
+| ROOM-05 | Phase 7 | Done |
+| ROOM-06 | Phase 7 | Done |
+| WALL-01 | Phase 7 | Done |
+| WALL-02 | Phase 7 | Done |
+| FURN-01 | Phase 8 | Done |
+| FURN-02 | Phase 8 | Done |
+| FURN-03 | Phase 8 | Done |
+| FURN-04 | Phase 8 | Done |
+| FURN-05 | Phase 8 | Done |
+| FURN-06 | Phase 8 | Done |
+| FURN-07 | Phase 8 | Done |
+| FURN-08 | Phase 8 | Done |
+| FURN-09 | Phase 8 | Done |
+| FURN-10 | Phase 8 | Done |
+| FURN-11 | Phase 8 | Done |
+| FURN-12 | Phase 8 | Done |
+| FURN-13 | Phase 8 | Done |
+| FURN-14 | Phase 8 | Done |
+| GFX-01 | Phase 9 | Done |
+| GFX-02 | Phase 9 | Done |
+| GFX-03 | Phase 9 | Done |
+| GFX-04 | Phase 9 | Done |
 
-**Coverage:**
-- v1 requirements: 16 total
-- Mapped to phases: 16
-- Unmapped: 0 ✓
-
-**Note:** Phase 5 (Polish + Mobile) covers delivery quality (audio, loading screens, Capacitor, PWA) and has no specific requirement IDs. All 16 v1 requirements are fully covered in Phases 1-4.
+**Coverage:** 25/25 v2.0 requirements mapped (100%).
 
 ---
-*Requirements defined: 2026-06-07*
-*Last updated: 2026-06-07 after roadmap creation*
+*Requirements defined: 2026-06-08 for v2.0 milestone*
