@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#1a1a2e"/>
+  <!-- Isometric room icon -->
+  <polygon points="256,80 432,176 256,272 80,176" fill="#d4c5a9" stroke="#8b7d6b" stroke-width="4"/>
+  <polygon points="432,176 432,336 256,432 256,272" fill="#c4b599" stroke="#8b7d6b" stroke-width="4"/>
+  <polygon points="80,176 80,336 256,432 256,272" fill="#b8a88a" stroke="#8b7d6b" stroke-width="4"/>
+  <!-- Figure -->
+  <circle cx="256" cy="200" r="24" fill="#fce4c8"/>
+  <rect x="242" y="224" width="28" height="36" rx="8" fill="#7ec8e3"/>
+  <polygon points="242,260 270,260 256,280" fill="#7ec8e3"/>
+</svg>

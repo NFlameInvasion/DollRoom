@@ -8,11 +8,11 @@
 
 ## Phases
 
-- [ ] **Phase 1: Project Skeleton** - Vite + Phaser + Zustand scaffold with singleton mount pattern
-- [ ] **Phase 2: Isometric Room System** - 5 rooms with Y-sorting and camera pan
-- [ ] **Phase 3: Character + Interaction + UI** - Player movement, interactive objects, React HUD
-- [ ] **Phase 4: Pet System + Save/Load** - Dog entity, feed interaction, persistence
-- [ ] **Phase 5: Polish + Mobile** - Audio, loading screens, Capacitor, PWA
+- [x] **Phase 1: Project Skeleton** - Vite + Phaser + Zustand scaffold with singleton mount pattern
+- [x] **Phase 2: Isometric Room System** - 5 rooms with Y-sorting and camera pan
+- [x] **Phase 3: Character + Interaction + UI** - Player movement, interactive objects, React HUD
+- [x] **Phase 4: Pet System + Save/Load** - Dog entity, feed interaction, persistence
+- [x] **Phase 5: Polish + Mobile** - Audio, loading screens, Capacitor, PWA
 
 ---
 
@@ -83,11 +83,11 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Skeleton | 0/0 | Not started | - |
-| 2. Isometric Room System | 0/0 | Not started | - |
-| 3. Character + Interaction + UI | 0/0 | Not started | - |
-| 4. Pet System + Save/Load | 0/0 | Not started | - |
-| 5. Polish + Mobile | 0/0 | Not started | - |
+| 1. Project Skeleton | 0/0 | Done | 2026-06-08 |
+| 2. Isometric Room System | 0/0 | Done | 2026-06-08 |
+| 3. Character + Interaction + UI | 0/0 | Done | 2026-06-08 |
+| 4. Pet System + Save/Load | 0/0 | Done | 2026-06-08 |
+| 5. Polish + Mobile | 0/0 | Done | 2026-06-08 |
 
 ---
 
