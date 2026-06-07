@@ -80,6 +80,8 @@ Deferred to future release.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| UI-01 | Phase 1 | Pending |
+| UI-02 | Phase 1 | Pending |
 | ROOM-01 | Phase 2 | Pending |
 | ROOM-02 | Phase 2 | Pending |
 | ROOM-03 | Phase 2 | Pending |
@@ -89,11 +91,9 @@ Deferred to future release.
 | OBJ-01 | Phase 3 | Pending |
 | OBJ-02 | Phase 3 | Pending |
 | OBJ-03 | Phase 3 | Pending |
+| UI-03 | Phase 3 | Pending |
 | PET-01 | Phase 4 | Pending |
 | PET-02 | Phase 4 | Pending |
-| UI-01 | Phase 1 | Pending |
-| UI-02 | Phase 1 | Pending |
-| UI-03 | Phase 3 | Pending |
 | SAVE-01 | Phase 4 | Pending |
 | SAVE-02 | Phase 4 | Pending |
 
@@ -102,6 +102,8 @@ Deferred to future release.
 - Mapped to phases: 16
 - Unmapped: 0 ✓
 
+**Note:** Phase 5 (Polish + Mobile) covers delivery quality (audio, loading screens, Capacitor, PWA) and has no specific requirement IDs. All 16 v1 requirements are fully covered in Phases 1-4.
+
 ---
 *Requirements defined: 2026-06-07*
-*Last updated: 2026-06-07 after initial definition*
+*Last updated: 2026-06-07 after roadmap creation*
